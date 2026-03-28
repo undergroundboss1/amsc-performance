@@ -16,24 +16,24 @@ function ApplyContent() {
   const programName = program ? programNames[program] : null;
 
   return (
-    <section className="py-12 px-6 bg-white min-h-[80vh]">
+    <section className="py-12 px-6 bg-white min-h-[80vh] pt-24">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="font-heading font-black text-4xl md:text-5xl tracking-wide mb-4">
+          <h1 className="font-black text-4xl md:text-5xl tracking-[4px] mb-4">
             APPLY TO TRAIN WITH AMSC
           </h1>
           {programName && (
-            <p className="text-accent font-semibold text-lg">
+            <p className="text-accent font-semibold text-base tracking-wide">
               Program: {programName}
             </p>
           )}
-          <p className="text-secondary mt-2">
+          <p className="text-secondary mt-2 text-sm">
             Complete the form below to begin your application process.
           </p>
         </div>
 
         {/* Tally.so Embed */}
-        <div className="bg-surface rounded-xl p-2">
+        <div className="bg-[#fafafa] border border-gray-200 p-2">
           <iframe
             data-tally-src={`https://tally.so/embed/nPBdJk?alignLeft=1&hideTitle=1&transparentBackground=1${program ? `&program=${encodeURIComponent(programName || program)}` : ''}`}
             loading="lazy"
@@ -43,7 +43,6 @@ function ApplyContent() {
             marginHeight="0"
             marginWidth="0"
             title="AMSC Application Form"
-            className="rounded-lg"
           />
         </div>
 

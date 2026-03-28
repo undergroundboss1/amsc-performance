@@ -1,34 +1,39 @@
+'use client';
 import Link from 'next/link';
+import AnimatedSection from '../components/AnimatedSection';
 
 const athletes = [
-  { name: 'James Gachago', desc: 'Midfielder · Kenya National Team · Viimsi JK', image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=500&fit=crop' },
-  { name: 'Albert Odero', desc: 'Guard · Kenya National Team · Nairobi City Thunder', image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=500&fit=crop' },
-  { name: 'Njoroge Kibugu', desc: 'Pro Golfer · Sunshine Development Tour', image: 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=400&h=500&fit=crop' },
-  { name: 'Mohammed Bajaber', desc: 'Forward · Kenya National Team · Simba SC', image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=500&fit=crop' },
-  { name: 'Angela Wachira', desc: 'Midfielder · Mulligan Division 1 NCAA Soccer', image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=500&fit=crop' },
-  { name: 'Robi Maximilla', desc: 'Midfielder · Kenya U20 National Team · KPL', image: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&h=500&fit=crop' },
-  { name: 'Austin Omondi', desc: 'NJCAA Division I · McLennan Men\'s Basketball', image: 'https://images.unsplash.com/photo-1559718062-361155fad299?w=400&h=500&fit=crop' },
-  { name: 'Mutahi Kibugu', desc: 'Pro Golfer · Sunshine Development Tour', image: 'https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=400&h=500&fit=crop' },
+  { name: 'Angela Wachira', desc: 'Midfielder · Mulligan Division 1 NCAA Soccer', image: '/images/athlete-angela.jpg' },
+  { name: 'Njoroge Kibugu', desc: 'Pro Golfer · Sunshine Development Tour', image: '/images/athlete-njoroge.jpg' },
+  { name: 'Mutahi Kibugu', desc: 'Pro Golfer · Sunshine Development Tour', image: '/images/athlete-mutahi.jpg' },
+  { name: 'Derrick Ogechi', desc: 'Nairobi City Thunder · Basketball Africa League', image: '/images/athlete-derrick.jpg' },
+  { name: 'James Gachago', desc: 'Midfielder · Kenya National Team · Viimsi JK', image: '/images/athlete-james.jpg' },
+  { name: 'Albert Odero', desc: 'Guard · Kenya National Team · Nairobi City Thunder', image: '/images/athlete-albert.jpg' },
+  { name: 'Mohammed Bajaber', desc: 'Forward · Kenya National Team · Simba SC', image: '/images/athlete-mohammed.jpg' },
+  { name: 'Austin Omondi', desc: 'NJCAA Division I · McLennan', image: '/images/athlete-austin.jpg' },
 ];
 
 const systemCards = [
   {
-    title: 'ASSESSMENT',
+    step: '01',
+    title: 'ASSESS',
     subtitle: 'Diagnose before we prescribe.',
-    desc: 'Movement. Force. Asymmetries. Clarity before load.',
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=500&h=350&fit=crop',
+    desc: 'Movement screening. Force profiling. Asymmetry mapping. We establish your baseline with data — not assumptions.',
+    image: '/images/system-assess.jpg',
   },
   {
-    title: 'STRUCTURED PROGRESSION',
+    step: '02',
+    title: 'DEVELOP',
     subtitle: 'Every phase has purpose.',
-    desc: 'From foundation to force to performance expression.',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=350&fit=crop',
+    desc: 'From foundation to force to performance expression. Structured progression through periodized training blocks.',
+    image: '/images/system-develop.jpg',
   },
   {
-    title: 'MEASURABLE PERFORMANCE',
+    step: '03',
+    title: 'TRANSFER',
     subtitle: 'Data guides decisions.',
-    desc: 'Speed metrics. Workload control. Objective benchmarks.',
-    image: 'https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=500&h=350&fit=crop',
+    desc: 'Speed metrics. Workload control. Objective benchmarks. If it doesn\'t transfer to sport, it doesn\'t matter.',
+    image: '/images/system-transfer.jpg',
   },
 ];
 
@@ -45,6 +50,7 @@ const programs = [
     ],
     price: 'Ksh 30,000',
     slug: 'one-on-one',
+    featured: true,
   },
   {
     label: 'STRUCTURED.',
@@ -91,278 +97,300 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
-        <div className="mb-8">
-          <h1 className="font-heading font-black text-7xl md:text-9xl tracking-tight text-text">
-            AMSC
-          </h1>
-          <div className="text-lg md:text-2xl tracking-[0.4em] text-secondary mt-2 font-body">
-            PERFORMANCE
-          </div>
-        </div>
-        <p className="text-secondary text-lg md:text-xl tracking-[0.2em] uppercase mt-8">
-          Engineered Athlete Development
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <Link
-            href="/apply"
-            className="bg-accent text-white px-10 py-4 rounded-lg text-base font-semibold hover:bg-red-800 transition-colors"
-          >
-            Apply to Train with AMSC
-          </Link>
-          <Link
-            href="/programs"
-            className="border border-gray-400 text-secondary px-10 py-4 rounded-lg text-base font-semibold hover:border-text hover:text-text transition-colors"
-          >
-            Explore Programs
-          </Link>
-        </div>
-      </section>
-
-      {/* Trusted By Elite Athletes - Featured Athlete */}
-      <section className="bg-black text-white py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="font-heading font-black text-4xl md:text-5xl tracking-wide mb-4">
-            TRUSTED BY ELITE ATHLETES
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Athletes trained at AMSC compete at the highest levels across multiple sports.
-          </p>
-          <div className="mt-12 max-w-xl mx-auto">
-            <div className="relative aspect-[3/4] rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=800&fit=crop"
-                alt="Derrick Ogechi - Nairobi City Thunder"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h3 className="font-heading font-bold text-2xl mt-6">Derrick Ogechi</h3>
-            <p className="text-gray-400 mt-1">Nairobi City Thunder · Basketball Africa League</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Athletes Trained by AMSC */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading font-black text-4xl md:text-5xl text-center mb-4 tracking-wide">
-            ATHLETES TRAINED BY AMSC
-          </h2>
-          <p className="text-secondary text-center text-lg max-w-3xl mx-auto mb-16">
-            Every athlete we train follows a structured, individualized process built around trust, communication, and long-term growth.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {athletes.map((athlete) => (
-              <div key={athlete.name} className="text-center">
-                <div className="aspect-[3/4] rounded-lg overflow-hidden mb-4">
-                  <img
-                    src={athlete.image}
-                    alt={athlete.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="font-heading font-bold text-base">{athlete.name}</h3>
-                <p className="text-secondary text-sm mt-1">{athlete.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 border-t border-gray-200 pt-6">
-            <p className="text-secondary text-sm text-center">
-              Images shown represent athletes trained by AMSC. Individual results vary. No endorsement implied.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* THE SYSTEM */}
-      <section className="py-20 px-6 bg-surface">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="font-heading font-black text-4xl md:text-5xl tracking-wide mb-4">
-            THE SYSTEM
-          </h2>
-          <p className="text-secondary text-lg mb-16">
-            A performance system built around the individual athlete.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {systemCards.map((card) => (
-              <div key={card.title} className="bg-white rounded-xl overflow-hidden shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-8 text-center">
-                  <h3 className="font-heading font-black text-xl tracking-wide mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-accent font-medium text-sm mb-4">{card.subtitle}</p>
-                  <p className="text-secondary text-sm">{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Training Philosophy Banner */}
       <section
-        className="relative py-32 px-6 bg-cover bg-center"
+        className="relative min-h-screen flex flex-col items-center justify-end pb-24 px-6 text-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1400&h=600&fit=crop')",
+          backgroundImage: "url('/images/hero-athlete.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundColor: '#0a0a0a',
         }}
       >
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative max-w-3xl mx-auto text-center text-white">
-          <h2 className="font-heading font-black text-4xl md:text-5xl tracking-wide mb-6">
-            TRAINING PHILOSOPHY
-          </h2>
-          <p className="text-gray-200 text-lg leading-relaxed mb-8">
-            At AMSC, we believe performance is built through patience, precision, and purpose. Every session, every rep, every phase of training is designed to move you closer to your potential — not just for the next competition, but for the long term.
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70" />
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1 className="text-white font-black text-6xl md:text-8xl tracking-[6px] mb-4">
+            AMSC
+          </h1>
+          <div className="text-white/80 text-lg md:text-2xl tracking-[0.5em] font-light mb-6">
+            PERFORMANCE
+          </div>
+          <p className="text-white/70 text-base md:text-lg tracking-[0.15em] uppercase mb-10">
+            Engineered Athlete Development
           </p>
-          <Link
-            href="/philosophy"
-            className="inline-block bg-accent text-white px-10 py-4 rounded-full text-base font-semibold hover:bg-red-800 transition-colors"
-          >
-            Our Training Philosophy
-          </Link>
-        </div>
-      </section>
-
-      {/* Choose Your Training Pathway */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading font-black text-4xl md:text-5xl text-center tracking-wide mb-4">
-            CHOOSE YOUR TRAINING PATHWAY
-          </h2>
-          <p className="text-secondary text-center text-lg max-w-3xl mx-auto mb-16">
-            Every pathway operates within the AMSC Performance System. The difference is the level of coaching access, oversight, and progression control.
-          </p>
-
-          {/* One-on-One - Full Width */}
-          <div className="bg-surface border-2 border-accent rounded-xl p-8 md:p-10 mb-8 max-w-2xl mx-auto">
-            <span className="text-accent text-xs font-bold tracking-[0.2em] uppercase">
-              {programs[0].label}
-            </span>
-            <h3 className="font-heading font-bold text-2xl mt-2 mb-4">{programs[0].name}</h3>
-            <p className="text-secondary mb-6">{programs[0].desc}</p>
-            <ul className="space-y-3 mb-8">
-              {programs[0].features.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-secondary text-sm">
-                  <span className="text-accent mt-1">•</span> {f}
-                </li>
-              ))}
-            </ul>
-            <div className="border-t border-gray-300 pt-6">
-              <p className="text-3xl font-bold text-text">
-                {programs[0].price}<span className="text-sm font-normal text-secondary"> / month</span>
-              </p>
-              <Link
-                href={`/apply?program=${programs[0].slug}`}
-                className="mt-4 block bg-accent text-white text-center py-4 rounded-lg font-semibold hover:bg-red-800 transition-colors"
-              >
-                Start Your Application
-              </Link>
-            </div>
-          </div>
-
-          {/* Group and Online - Two Column */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {programs.slice(1, 3).map((program) => (
-              <div key={program.slug} className="bg-surface border border-gray-200 rounded-xl p-8 md:p-10">
-                <span className="text-accent text-xs font-bold tracking-[0.2em] uppercase">
-                  {program.label}
-                </span>
-                <h3 className="font-heading font-bold text-2xl mt-2 mb-4">{program.name}</h3>
-                <p className="text-secondary mb-6">{program.desc}</p>
-                <ul className="space-y-3 mb-8">
-                  {program.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-secondary text-sm">
-                      <span className="text-accent mt-1">•</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <div className="border-t border-gray-300 pt-6">
-                  <p className="text-3xl font-bold text-text">
-                    {program.price}<span className="text-sm font-normal text-secondary"> / month</span>
-                  </p>
-                  <Link
-                    href={`/apply?program=${program.slug}`}
-                    className="mt-4 block bg-accent text-white text-center py-4 rounded-lg font-semibold hover:bg-red-800 transition-colors"
-                  >
-                    Start Your Application
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Youth - Single */}
-          <div className="bg-surface border border-gray-200 rounded-xl p-8 md:p-10 mb-8 max-w-2xl mx-auto">
-            <span className="text-accent text-xs font-bold tracking-[0.2em] uppercase">
-              {programs[3].label}
-            </span>
-            <h3 className="font-heading font-bold text-2xl mt-2 mb-4">{programs[3].name}</h3>
-            <p className="text-secondary mb-6">{programs[3].desc}</p>
-            <ul className="space-y-3 mb-8">
-              {programs[3].features.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-secondary text-sm">
-                  <span className="text-accent mt-1">•</span> {f}
-                </li>
-              ))}
-            </ul>
-            <div className="border-t border-gray-300 pt-6">
-              <p className="text-3xl font-bold text-text">
-                {programs[3].price}<span className="text-sm font-normal text-secondary"> / month</span>
-              </p>
-              <Link
-                href={`/apply?program=${programs[3].slug}`}
-                className="mt-4 block bg-accent text-white text-center py-4 rounded-lg font-semibold hover:bg-red-800 transition-colors"
-              >
-                Start Your Application
-              </Link>
-            </div>
-          </div>
-
-          {/* Team Consulting */}
-          <div className="bg-surface border border-gray-200 rounded-xl p-8 md:p-10 max-w-xl mx-auto text-center">
-            <h3 className="font-heading font-bold text-2xl mb-4">Team & School Performance Consulting</h3>
-            <p className="text-secondary mb-6">
-              Performance system implementation for teams and institutions.
-            </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/apply?program=consulting"
-              className="block bg-accent text-white text-center py-4 rounded-lg font-semibold hover:bg-red-800 transition-colors"
+              href="/apply"
+              className="bg-accent text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 tracking-wide"
             >
-              Contact Us
+              Apply to Train with AMSC
+            </Link>
+            <Link
+              href="/programs"
+              className="border border-white/40 text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-text transition-all duration-200 tracking-wide"
+            >
+              Explore Programs
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Ready to Elevate CTA */}
+      {/* Trusted By Elite Athletes */}
+      <section className="bg-[#0a0a0a] text-white py-28 px-6">
+        <AnimatedSection>
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="section-title font-black text-3xl md:text-5xl tracking-[4px] mb-4">
+              TRUSTED BY ELITE ATHLETES
+            </h2>
+            <p className="text-gray-500 text-base max-w-2xl mx-auto mb-16">
+              Athletes trained at AMSC compete at the highest levels across multiple sports.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2px]">
+            {athletes.map((athlete, i) => (
+              <AnimatedSection key={athlete.name} delay={i * 0.08}>
+                <div className="card group bg-[#0a0a0a] cursor-pointer">
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <img
+                      src={athlete.image}
+                      alt={athlete.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center"><span class="text-gray-600 text-4xl font-black">${athlete.name.split(' ').map(n => n[0]).join('')}</span></div>`;
+                      }}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-sm tracking-wide">{athlete.name}</h3>
+                    <p className="text-gray-500 text-xs mt-1 leading-relaxed">{athlete.desc}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* THE SYSTEM */}
+      <section className="py-28 px-6 bg-[#fafafa]">
+        <AnimatedSection>
+          <div className="max-w-7xl mx-auto text-center mb-16">
+            <h2 className="section-title font-black text-3xl md:text-5xl tracking-[4px] mb-4">
+              THE SYSTEM
+            </h2>
+            <p className="text-secondary text-base max-w-2xl mx-auto">
+              A performance system built around the individual athlete.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {systemCards.map((card, i) => (
+            <AnimatedSection key={card.title} delay={i * 0.15}>
+              <div className="card bg-white shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center"><span class="text-gray-400 text-6xl font-black">${card.step}</span></div>`;
+                    }}
+                  />
+                </div>
+                <div className="p-8 text-center">
+                  <span className="text-accent text-xs font-bold tracking-[3px]">{card.step}</span>
+                  <h3 className="font-black text-xl tracking-[3px] mt-2 mb-2">
+                    {card.title}
+                  </h3>
+                  <p className="text-accent font-medium text-sm mb-3">{card.subtitle}</p>
+                  <p className="text-secondary text-sm leading-relaxed">{card.desc}</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </section>
+
+      {/* Training Philosophy Banner */}
       <section
-        className="relative py-32 px-6 bg-cover bg-center"
+        className="relative py-36 px-6 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&h=600&fit=crop')",
+          backgroundImage: "url('/images/philosophy-banner.jpg')",
+          backgroundColor: '#0a0a0a',
         }}
       >
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative max-w-3xl mx-auto text-center text-white">
-          <h2 className="font-heading font-black text-4xl md:text-5xl tracking-wide mb-6">
-            READY TO ELEVATE YOUR PERFORMANCE?
-          </h2>
-          <p className="text-gray-200 text-lg leading-relaxed mb-8">
-            Whether you are preparing for competition, rebuilding after injury, or laying the foundation for long-term success — AMSC provides the structure, clarity, and support required to move forward with purpose.
-          </p>
-          <Link
-            href="/apply"
-            className="inline-block bg-accent text-white px-10 py-4 rounded-full text-base font-semibold hover:bg-red-800 transition-colors"
-          >
-            Apply to Train with AMSC
-          </Link>
+        <div className="absolute inset-0 bg-black/65" />
+        <AnimatedSection>
+          <div className="relative max-w-3xl mx-auto text-center text-white">
+            <h2 className="font-black text-3xl md:text-5xl tracking-[4px] mb-6">
+              TRAINING PHILOSOPHY
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+              At AMSC, we believe performance is built through patience, precision, and purpose. Every session, every rep, every phase of training is designed to move you closer to your potential — not just for the next competition, but for the long term.
+            </p>
+            <Link
+              href="/philosophy"
+              className="inline-block bg-accent text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 tracking-wide"
+            >
+              Our Training Philosophy
+            </Link>
+          </div>
+        </AnimatedSection>
+      </section>
+
+      {/* Choose Your Training Pathway */}
+      <section className="py-28 px-6 bg-white">
+        <AnimatedSection>
+          <div className="max-w-7xl mx-auto text-center mb-16">
+            <h2 className="section-title font-black text-3xl md:text-5xl tracking-[4px] mb-4">
+              CHOOSE YOUR TRAINING PATHWAY
+            </h2>
+            <p className="text-secondary text-base max-w-3xl mx-auto">
+              Every pathway operates within the AMSC Performance System. The difference is the level of coaching access, oversight, and progression control.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <div className="max-w-7xl mx-auto">
+          {/* One-on-One - Featured */}
+          <AnimatedSection>
+            <div className="card bg-[#fafafa] border-t-[3px] border-t-accent border border-gray-200 p-8 md:p-10 mb-8 max-w-2xl mx-auto">
+              <span className="text-accent text-xs font-bold tracking-[3px]">
+                {programs[0].label}
+              </span>
+              <h3 className="font-bold text-2xl tracking-[2px] mt-2 mb-4">{programs[0].name}</h3>
+              <p className="text-secondary mb-6 text-sm leading-relaxed">{programs[0].desc}</p>
+              <ul className="space-y-3 mb-8">
+                {programs[0].features.map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-secondary text-sm">
+                    <span className="text-accent mt-0.5 font-bold">—</span> {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-3xl font-bold text-text">
+                  {programs[0].price}<span className="text-sm font-normal text-secondary"> / month</span>
+                </p>
+                <Link
+                  href={`/apply?program=${programs[0].slug}`}
+                  className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                >
+                  Start Your Application
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Group and Online */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            {programs.slice(1, 3).map((program, i) => (
+              <AnimatedSection key={program.slug} delay={i * 0.1}>
+                <div className="card bg-[#fafafa] border border-gray-200 p-8 md:p-10 h-full">
+                  <span className="text-accent text-xs font-bold tracking-[3px]">
+                    {program.label}
+                  </span>
+                  <h3 className="font-bold text-2xl tracking-[2px] mt-2 mb-4">{program.name}</h3>
+                  <p className="text-secondary mb-6 text-sm leading-relaxed">{program.desc}</p>
+                  <ul className="space-y-3 mb-8">
+                    {program.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-secondary text-sm">
+                        <span className="text-accent mt-0.5 font-bold">—</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="border-t border-gray-200 pt-6 mt-auto">
+                    <p className="text-3xl font-bold text-text">
+                      {program.price}<span className="text-sm font-normal text-secondary"> / month</span>
+                    </p>
+                    <Link
+                      href={`/apply?program=${program.slug}`}
+                      className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                    >
+                      Start Your Application
+                    </Link>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {/* Youth */}
+          <AnimatedSection>
+            <div className="card bg-[#fafafa] border border-gray-200 p-8 md:p-10 mb-8 max-w-2xl mx-auto">
+              <span className="text-accent text-xs font-bold tracking-[3px]">
+                {programs[3].label}
+              </span>
+              <h3 className="font-bold text-2xl tracking-[2px] mt-2 mb-4">{programs[3].name}</h3>
+              <p className="text-secondary mb-6 text-sm leading-relaxed">{programs[3].desc}</p>
+              <ul className="space-y-3 mb-8">
+                {programs[3].features.map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-secondary text-sm">
+                    <span className="text-accent mt-0.5 font-bold">—</span> {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-3xl font-bold text-text">
+                  {programs[3].price}<span className="text-sm font-normal text-secondary"> / month</span>
+                </p>
+                <Link
+                  href={`/apply?program=${programs[3].slug}`}
+                  className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                >
+                  Start Your Application
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Team Consulting */}
+          <AnimatedSection>
+            <div className="card bg-[#fafafa] border border-gray-200 p-8 md:p-10 max-w-xl mx-auto text-center">
+              <h3 className="font-bold text-2xl tracking-[2px] mb-4">Team & School Performance Consulting</h3>
+              <p className="text-secondary mb-6 text-sm leading-relaxed">
+                Performance system implementation for teams and institutions.
+              </p>
+              <Link
+                href="/apply?program=consulting"
+                className="block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </AnimatedSection>
         </div>
+      </section>
+
+      {/* Ready to Elevate CTA */}
+      <section
+        className="relative py-36 px-6 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/philosophy-banner.jpg')",
+          backgroundColor: '#0a0a0a',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/65" />
+        <AnimatedSection>
+          <div className="relative max-w-3xl mx-auto text-center text-white">
+            <h2 className="font-black text-3xl md:text-5xl tracking-[4px] mb-6">
+              READY TO ELEVATE YOUR PERFORMANCE?
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+              Whether you are preparing for competition, rebuilding after injury, or laying the foundation for long-term success — AMSC provides the structure, clarity, and support required to move forward with purpose.
+            </p>
+            <Link
+              href="/apply"
+              className="inline-block bg-accent text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 tracking-wide"
+            >
+              Apply to Train with AMSC
+            </Link>
+          </div>
+        </AnimatedSection>
       </section>
     </>
   );

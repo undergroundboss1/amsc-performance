@@ -1,48 +1,54 @@
+'use client';
 import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200">
+    <footer className="bg-[#f8f8f6] border-t border-[#e5e5e5]">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Logo & Tagline */}
           <div>
-            <div className="font-heading font-bold text-2xl tracking-tight text-text mb-4">
-              <span className="font-black text-3xl">AMSC</span>
-              <div className="text-[10px] tracking-[0.3em] font-body font-normal -mt-1">PERFORMANCE</div>
-            </div>
-            <p className="text-secondary text-sm mt-6">
+            <img
+              src="/images/amsc-logo.svg"
+              alt="AMSC Performance"
+              className="h-10 mb-4"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.insertAdjacentHTML('afterend', '<div class="font-bold text-2xl tracking-tight mb-4"><span class="text-3xl font-black">AMSC</span><div class="text-[9px] tracking-[0.3em] font-normal -mt-1">PERFORMANCE</div></div>');
+              }}
+            />
+            <p className="text-secondary text-sm mt-6 leading-relaxed">
               Train Smarter. Move Better. Perform Longer.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-bold text-sm uppercase tracking-[2px] mb-5 text-text">Quick Links</h4>
             <div className="space-y-3">
-              <Link href="/" className="block text-secondary text-sm hover:text-text transition-colors">Home</Link>
-              <Link href="/programs" className="block text-secondary text-sm hover:text-text transition-colors">Programs</Link>
-              <Link href="/philosophy" className="block text-secondary text-sm hover:text-text transition-colors">Philosophy</Link>
-              <Link href="/member-portal" className="block text-secondary text-sm hover:text-text transition-colors">Member Portal</Link>
-              <Link href="/apply" className="block text-secondary text-sm hover:text-text transition-colors">Apply</Link>
+              <Link href="/" className="block text-secondary text-sm hover:text-accent transition-colors">Home</Link>
+              <Link href="/programs" className="block text-secondary text-sm hover:text-accent transition-colors">Programs</Link>
+              <Link href="/philosophy" className="block text-secondary text-sm hover:text-accent transition-colors">Philosophy</Link>
+              <Link href="/member-portal" className="block text-secondary text-sm hover:text-accent transition-colors">Member Portal</Link>
+              <Link href="/apply" className="block text-secondary text-sm hover:text-accent transition-colors">Apply</Link>
             </div>
           </div>
 
           {/* Programs */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-4">Programs</h4>
+            <h4 className="font-bold text-sm uppercase tracking-[2px] mb-5 text-text">Programs</h4>
             <div className="space-y-3">
-              <Link href="/programs/one-on-one" className="block text-secondary text-sm hover:text-text transition-colors">1-on-1 Coaching</Link>
-              <Link href="/programs/online" className="block text-secondary text-sm hover:text-text transition-colors">Online Training</Link>
-              <Link href="/programs/consulting" className="block text-secondary text-sm hover:text-text transition-colors">Team Consulting</Link>
-              <Link href="/programs/group" className="block text-secondary text-sm hover:text-text transition-colors">Group Training</Link>
-              <Link href="/programs/youth" className="block text-secondary text-sm hover:text-text transition-colors">Youth Development</Link>
+              <Link href="/programs/one-on-one" className="block text-secondary text-sm hover:text-accent transition-colors">1-on-1 Coaching</Link>
+              <Link href="/programs/online" className="block text-secondary text-sm hover:text-accent transition-colors">Online Training</Link>
+              <Link href="/programs/consulting" className="block text-secondary text-sm hover:text-accent transition-colors">Team Consulting</Link>
+              <Link href="/programs/group" className="block text-secondary text-sm hover:text-accent transition-colors">Group Training</Link>
+              <Link href="/programs/youth" className="block text-secondary text-sm hover:text-accent transition-colors">Youth Development</Link>
             </div>
           </div>
 
           {/* Connect */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-4">Connect</h4>
+            <h4 className="font-bold text-sm uppercase tracking-[2px] mb-5 text-text">Connect</h4>
             <a
               href="https://instagram.com"
               target="_blank"
@@ -58,8 +64,8 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-gray-200 py-6 text-center">
-        <p className="text-secondary text-sm">
+      <div className="border-t border-[#e5e5e5] py-6 text-center">
+        <p className="text-[#999] text-xs">
           &copy; 2026 AMSC Performance. All rights reserved.
         </p>
       </div>

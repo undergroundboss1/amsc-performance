@@ -1,13 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --brand-red: #a60008;
+  --brand-dark-red: #820b0b;
+  --brand-black: #000000;
+  --brand-dark-grey: #1a1a1a;
+  --brand-light-grey: #d3d3d3;
+  --brand-white: #f5f5f8;
+  --brand-bg: #fafafa;
+}
+
 body {
-  color: #1C1C1C;
-  background: #F4F2EE;
-  font-family: system-ui, -apple-system, sans-serif;
+  color: #1a1a1a;
+  background: #fafafa;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Georgia, serif;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Button hover animations */
+button,
+a.btn,
+.btn {
+  transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+}
+
+button:hover,
+a.btn:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(166, 0, 8, 0.25);
+}
+
+button:active,
+a.btn:active,
+.btn:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+/* Card hover animations */
+.card {
+  transition: transform 0.35s, box-shadow 0.35s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.04);
+}
+
+/* Nav link animations */
+nav a {
+  transition: color 0.2s, opacity 0.2s;
+}
+
+nav a:hover {
+  color: var(--brand-red);
+  opacity: 0.85;
+}
+
+/* Red decorative line for section titles */
+.section-title::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--brand-red);
+  margin: 0 auto 16px;
+}
+
+.section-title-left::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--brand-red);
+  margin-bottom: 16px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
