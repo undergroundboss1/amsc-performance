@@ -43,8 +43,13 @@ export default function Navbar() {
             alt="AMSC Performance"
             className="h-10"
             onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.parentElement.innerHTML = '<div class="font-bold text-xl tracking-tight"><span class="text-2xl font-black">AMSC</span><div class="text-[9px] tracking-[0.3em] font-normal -mt-1">PERFORMANCE</div></div>';
+              // Try PNG fallback
+              if (e.target.src.endsWith('.svg')) {
+                e.target.src = '/images/amsc-logo.png';
+              } else {
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = '<div class="font-bold text-xl tracking-tight"><span class="text-2xl font-black">AMSC</span><div class="text-[9px] tracking-[0.3em] font-normal -mt-1">PERFORMANCE</div></div>';
+              }
             }}
           />
         </Link>

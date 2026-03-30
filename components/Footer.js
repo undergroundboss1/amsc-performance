@@ -13,8 +13,12 @@ export default function Footer() {
               alt="AMSC Performance"
               className="h-10 mb-4"
               onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.insertAdjacentHTML('afterend', '<div class="font-bold text-2xl tracking-tight mb-4"><span class="text-3xl font-black">AMSC</span><div class="text-[9px] tracking-[0.3em] font-normal -mt-1">PERFORMANCE</div></div>');
+                if (e.target.src.endsWith('.svg')) {
+                  e.target.src = '/images/amsc-logo.png';
+                } else {
+                  e.target.style.display = 'none';
+                  e.target.insertAdjacentHTML('afterend', '<div class="font-bold text-2xl tracking-tight mb-4"><span class="text-3xl font-black">AMSC</span><div class="text-[9px] tracking-[0.3em] font-normal -mt-1">PERFORMANCE</div></div>');
+                }
               }}
             />
             <p className="text-secondary text-sm mt-6 leading-relaxed">
