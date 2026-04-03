@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../components/AnimatedSection';
 import CountUp from '../components/CountUp';
@@ -40,9 +41,9 @@ const systemCards = [
 ];
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Athletes Trained' },
+  { value: 100, suffix: '+', label: 'Athletes Trained' },
   { value: 6, suffix: '', label: 'Sports' },
-  { value: 4, suffix: '+', label: 'Years' },
+  { value: 6, suffix: '+', label: 'Years' },
   { value: 100, suffix: '%', label: 'Data-Driven' },
 ];
 
@@ -117,71 +118,71 @@ const heroChild = {
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-screen grid grid-cols-1 md:grid-cols-2">
-        {/* Left — Branding */}
-        <div className="bg-[#1a1a1a] flex flex-col justify-center px-8 md:px-16 py-24 md:py-0 order-2 md:order-1">
-          <motion.div
-            className="max-w-lg"
-            variants={heroStagger}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.img
+      {/* Hero Section — Centered Logo */}
+      <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
+        {/* Subtle radial gradient background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(220,38,38,0.06)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(17,17,17,1)_0%,_transparent_50%)]" />
+
+        <motion.div
+          className="relative z-10 text-center px-6"
+          variants={heroStagger}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={heroChild}>
+            <Image
               src="/images/amsc-logo-hero.png"
               alt="AMSC Performance"
-              className="w-[260px] md:w-[380px] mb-6"
-              variants={heroChild}
+              width={500}
+              height={200}
+              className="mx-auto w-[280px] md:w-[420px] lg:w-[500px] h-auto mb-8"
+              priority
             />
-            <motion.p
-              className="text-white/50 text-sm md:text-base tracking-[0.2em] uppercase mb-10"
-              variants={heroChild}
-            >
-              Engineered Athlete Development
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              variants={heroChild}
-            >
-              <Link
-                href="/apply"
-                className="bg-accent text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 tracking-wide text-center"
-              >
-                Apply to Train with AMSC
-              </Link>
-              <Link
-                href="/programs"
-                className="border border-white/20 text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-white hover:text-text transition-all duration-200 tracking-wide text-center"
-              >
-                Explore Programs
-              </Link>
-            </motion.div>
           </motion.div>
-        </div>
-        {/* Right — Image */}
-        <div
-          className="relative min-h-[50vh] md:min-h-screen order-1 md:order-2"
-          style={{
-            backgroundImage: "url('/images/hero-athlete.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center top',
-            backgroundColor: '#0a0a0a',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/20" />
-        </div>
+
+          <motion.p
+            className="font-display text-white/40 text-sm md:text-base tracking-[0.3em] uppercase mb-12"
+            variants={heroChild}
+          >
+            Engineered Athlete Development
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={heroChild}
+          >
+            <Link
+              href="/apply"
+              className="bg-accent text-white px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 text-center"
+            >
+              Apply to Train with AMSC
+            </Link>
+            <Link
+              href="/programs"
+              className="border border-white/15 text-white/80 px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-white/5 hover:border-white/25 hover:text-white transition-all duration-200 text-center"
+            >
+              Explore Programs
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-[#111] py-16 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="bg-surface py-20 px-6 border-t border-white/5">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
           {stats.map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1}>
               <div>
-                <p className="text-white font-black text-4xl md:text-5xl tracking-tight">
+                <p className="font-display text-white font-black text-5xl md:text-6xl tracking-tight glow-red">
                   <CountUp end={stat.value} suffix={stat.suffix} duration={2} />
                 </p>
-                <p className="text-gray-500 text-xs tracking-[3px] uppercase mt-2">{stat.label}</p>
+                <p className="font-display text-secondary text-xs tracking-[0.25em] uppercase mt-3 font-medium">
+                  {stat.label}
+                </p>
               </div>
             </AnimatedSection>
           ))}
@@ -189,37 +190,37 @@ export default function Home() {
       </section>
 
       {/* Trusted By Elite Athletes */}
-      <section className="bg-[#0a0a0a] text-white py-28 px-6">
+      <section className="bg-background text-white py-32 px-6">
         <AnimatedSection>
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="section-title font-black text-3xl md:text-5xl tracking-[4px] mb-4">
+            <h2 className="section-title font-display font-black text-3xl md:text-5xl tracking-widest mb-4">
               TRUSTED BY ELITE ATHLETES
             </h2>
-            <p className="text-gray-500 text-base max-w-2xl mx-auto mb-16">
+            <p className="text-secondary text-base max-w-2xl mx-auto mb-20 font-body">
               Athletes trained at AMSC compete at the highest levels across multiple sports.
             </p>
           </div>
         </AnimatedSection>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2px]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
             {athletes.map((athlete, i) => (
               <AnimatedSection key={athlete.name} delay={i * 0.08}>
-                <div className="card group bg-[#0a0a0a] cursor-pointer">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img
+                <div className="card group bg-surface-light relative">
+                  <div className="aspect-[3/4] overflow-hidden relative">
+                    <Image
                       src={athlete.image}
                       alt={athlete.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center"><span class="text-gray-600 text-4xl font-black">${athlete.name.split(' ').map(n => n[0]).join('')}</span></div>`;
-                      }}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-bold text-sm tracking-wide">{athlete.name}</h3>
-                    <p className="text-gray-500 text-xs mt-1 leading-relaxed">{athlete.desc}</p>
+                    <h3 className="font-display font-bold text-sm tracking-wider">{athlete.name}</h3>
+                    <p className="text-secondary text-xs mt-1 leading-relaxed font-body">{athlete.desc}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -229,40 +230,43 @@ export default function Home() {
       </section>
 
       {/* THE SYSTEM */}
-      <section className="py-28 px-6 bg-[#fafafa]">
+      <section className="py-32 px-6 bg-surface">
         <AnimatedSection>
-          <div className="max-w-7xl mx-auto text-center mb-16">
-            <h2 className="section-title font-black text-3xl md:text-5xl tracking-[4px] mb-4">
+          <div className="max-w-7xl mx-auto text-center mb-20">
+            <h2 className="section-title font-display font-black text-3xl md:text-5xl tracking-widest mb-4">
               THE SYSTEM
             </h2>
-            <p className="text-secondary text-base max-w-2xl mx-auto">
+            <p className="text-secondary text-base max-w-2xl mx-auto font-body">
               A performance system built around the individual athlete.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {systemCards.map((card, i) => (
             <AnimatedSection key={card.title} delay={i * 0.15}>
-              <div className="card bg-white shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
+              <div className="card bg-surface-light border border-white/5 rounded-lg overflow-hidden group">
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <Image
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center"><span class="text-gray-400 text-6xl font-black">${card.step}</span></div>`;
-                    }}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-500" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-accent text-white font-display text-xs font-bold tracking-widest px-3 py-1 rounded">
+                      {card.step}
+                    </span>
+                  </div>
                 </div>
                 <div className="p-8 text-center">
-                  <span className="text-accent text-xs font-bold tracking-[3px]">{card.step}</span>
-                  <h3 className="font-black text-xl tracking-[3px] mt-2 mb-2">
+                  <h3 className="font-display font-black text-2xl tracking-widest mb-2">
                     {card.title}
                   </h3>
-                  <p className="text-accent font-medium text-sm mb-3">{card.subtitle}</p>
-                  <p className="text-secondary text-sm leading-relaxed">{card.desc}</p>
+                  <p className="text-accent font-display font-semibold text-sm mb-3 tracking-wide">{card.subtitle}</p>
+                  <p className="text-secondary text-sm leading-relaxed font-body">{card.desc}</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -271,25 +275,23 @@ export default function Home() {
       </section>
 
       {/* Training Philosophy Banner */}
-      <section
-        className="relative py-36 px-6 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/philosophy-banner.jpg')",
-          backgroundColor: '#0a0a0a',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/65" />
+      <section className="relative py-40 px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/philosophy-banner.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-black/70" />
         <AnimatedSection>
           <div className="relative max-w-3xl mx-auto text-center text-white">
-            <h2 className="font-black text-3xl md:text-5xl tracking-[4px] mb-6">
+            <h2 className="font-display font-black text-3xl md:text-5xl tracking-widest mb-8">
               TRAINING PHILOSOPHY
             </h2>
-            <p className="text-gray-300 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-white/60 text-base leading-relaxed mb-12 max-w-2xl mx-auto font-body">
               At AMSC, we believe performance is built through patience, precision, and purpose. Every session, every rep, every phase of training is designed to move you closer to your potential — not just for the next competition, but for the long term.
             </p>
             <Link
               href="/philosophy"
-              className="inline-block bg-accent text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 tracking-wide"
+              className="inline-block bg-accent text-white px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30"
             >
               Our Training Philosophy
             </Link>
@@ -298,13 +300,13 @@ export default function Home() {
       </section>
 
       {/* Choose Your Training Pathway */}
-      <section className="py-28 px-6 bg-white">
+      <section className="py-32 px-6 bg-background">
         <AnimatedSection>
-          <div className="max-w-7xl mx-auto text-center mb-16">
-            <h2 className="section-title font-black text-3xl md:text-5xl tracking-[4px] mb-4">
+          <div className="max-w-7xl mx-auto text-center mb-20">
+            <h2 className="section-title font-display font-black text-3xl md:text-5xl tracking-widest mb-4">
               CHOOSE YOUR TRAINING PATHWAY
             </h2>
-            <p className="text-secondary text-base max-w-3xl mx-auto">
+            <p className="text-secondary text-base max-w-3xl mx-auto font-body">
               Every pathway operates within the AMSC Performance System. The difference is the level of coaching access, oversight, and progression control.
             </p>
           </div>
@@ -313,26 +315,31 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* One-on-One - Featured */}
           <AnimatedSection delay={0.1}>
-            <div className="card bg-[#fafafa] border-t-[3px] border-t-accent border border-gray-200 p-8 md:p-10 mb-8 max-w-2xl mx-auto">
-              <span className="text-accent text-xs font-bold tracking-[3px]">
+            <div className="card bg-surface-light border border-white/5 rounded-lg p-8 md:p-10 mb-8 max-w-2xl mx-auto relative overflow-visible">
+              <div className="absolute -top-3 left-8">
+                <span className="bg-gold text-black font-display text-xs font-bold tracking-widest px-4 py-1.5 rounded-full uppercase">
+                  Recommended
+                </span>
+              </div>
+              <span className="text-accent font-display text-xs font-bold tracking-[0.25em]">
                 {programs[0].label}
               </span>
-              <h3 className="font-bold text-2xl tracking-[2px] mt-2 mb-4">{programs[0].name}</h3>
-              <p className="text-secondary mb-6 text-sm leading-relaxed">{programs[0].desc}</p>
+              <h3 className="font-display font-bold text-2xl tracking-widest mt-2 mb-4">{programs[0].name}</h3>
+              <p className="text-secondary mb-6 text-sm leading-relaxed font-body">{programs[0].desc}</p>
               <ul className="space-y-3 mb-8">
                 {programs[0].features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-secondary text-sm">
+                  <li key={f} className="flex items-start gap-3 text-secondary text-sm font-body">
                     <span className="text-accent mt-0.5 font-bold">—</span> {f}
                   </li>
                 ))}
               </ul>
-              <div className="border-t border-gray-200 pt-6">
-                <p className="text-3xl font-bold text-text">
+              <div className="border-t border-white/10 pt-6">
+                <p className="font-display text-3xl font-bold text-white">
                   {programs[0].price}<span className="text-sm font-normal text-secondary"> / month</span>
                 </p>
                 <Link
                   href={`/apply?program=${programs[0].slug}`}
-                  className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                  className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
                 >
                   Start Your Application
                 </Link>
@@ -341,29 +348,29 @@ export default function Home() {
           </AnimatedSection>
 
           {/* Group and Online */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {programs.slice(1, 3).map((program, i) => (
               <AnimatedSection key={program.slug} delay={0.2 + i * 0.1}>
-                <div className="card bg-[#fafafa] border border-gray-200 p-8 md:p-10 h-full">
-                  <span className="text-accent text-xs font-bold tracking-[3px]">
+                <div className="card bg-surface-light border border-white/5 rounded-lg p-8 md:p-10 h-full">
+                  <span className="text-accent font-display text-xs font-bold tracking-[0.25em]">
                     {program.label}
                   </span>
-                  <h3 className="font-bold text-2xl tracking-[2px] mt-2 mb-4">{program.name}</h3>
-                  <p className="text-secondary mb-6 text-sm leading-relaxed">{program.desc}</p>
+                  <h3 className="font-display font-bold text-2xl tracking-widest mt-2 mb-4">{program.name}</h3>
+                  <p className="text-secondary mb-6 text-sm leading-relaxed font-body">{program.desc}</p>
                   <ul className="space-y-3 mb-8">
                     {program.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-secondary text-sm">
+                      <li key={f} className="flex items-start gap-3 text-secondary text-sm font-body">
                         <span className="text-accent mt-0.5 font-bold">—</span> {f}
                       </li>
                     ))}
                   </ul>
-                  <div className="border-t border-gray-200 pt-6 mt-auto">
-                    <p className="text-3xl font-bold text-text">
+                  <div className="border-t border-white/10 pt-6 mt-auto">
+                    <p className="font-display text-3xl font-bold text-white">
                       {program.price}<span className="text-sm font-normal text-secondary"> / month</span>
                     </p>
                     <Link
                       href={`/apply?program=${program.slug}`}
-                      className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                      className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
                     >
                       Start Your Application
                     </Link>
@@ -375,26 +382,26 @@ export default function Home() {
 
           {/* Youth */}
           <AnimatedSection delay={0.3}>
-            <div className="card bg-[#fafafa] border border-gray-200 p-8 md:p-10 mb-8 max-w-2xl mx-auto">
-              <span className="text-accent text-xs font-bold tracking-[3px]">
+            <div className="card bg-surface-light border border-white/5 rounded-lg p-8 md:p-10 mb-8 max-w-2xl mx-auto">
+              <span className="text-accent font-display text-xs font-bold tracking-[0.25em]">
                 {programs[3].label}
               </span>
-              <h3 className="font-bold text-2xl tracking-[2px] mt-2 mb-4">{programs[3].name}</h3>
-              <p className="text-secondary mb-6 text-sm leading-relaxed">{programs[3].desc}</p>
+              <h3 className="font-display font-bold text-2xl tracking-widest mt-2 mb-4">{programs[3].name}</h3>
+              <p className="text-secondary mb-6 text-sm leading-relaxed font-body">{programs[3].desc}</p>
               <ul className="space-y-3 mb-8">
                 {programs[3].features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-secondary text-sm">
+                  <li key={f} className="flex items-start gap-3 text-secondary text-sm font-body">
                     <span className="text-accent mt-0.5 font-bold">—</span> {f}
                   </li>
                 ))}
               </ul>
-              <div className="border-t border-gray-200 pt-6">
-                <p className="text-3xl font-bold text-text">
+              <div className="border-t border-white/10 pt-6">
+                <p className="font-display text-3xl font-bold text-white">
                   {programs[3].price}<span className="text-sm font-normal text-secondary"> / month</span>
                 </p>
                 <Link
                   href={`/apply?program=${programs[3].slug}`}
-                  className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                  className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
                 >
                   Start Your Application
                 </Link>
@@ -404,14 +411,14 @@ export default function Home() {
 
           {/* Team Consulting */}
           <AnimatedSection delay={0.4}>
-            <div className="card bg-[#fafafa] border border-gray-200 p-8 md:p-10 max-w-xl mx-auto text-center">
-              <h3 className="font-bold text-2xl tracking-[2px] mb-4">Team & School Performance Consulting</h3>
-              <p className="text-secondary mb-6 text-sm leading-relaxed">
+            <div className="card bg-surface-light border border-white/5 rounded-lg p-8 md:p-10 max-w-xl mx-auto text-center">
+              <h3 className="font-display font-bold text-2xl tracking-widest mb-4">Team & School Performance Consulting</h3>
+              <p className="text-secondary mb-6 text-sm leading-relaxed font-body">
                 Performance system implementation for teams and institutions.
               </p>
               <Link
                 href="/apply?program=consulting"
-                className="block bg-accent text-white text-center py-4 rounded-full font-semibold text-sm hover:bg-accent-dark transition-all duration-200 tracking-wide"
+                className="block bg-white/10 text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-white/15 border border-white/10 transition-all duration-200"
               >
                 Contact Us
               </Link>
@@ -421,25 +428,23 @@ export default function Home() {
       </section>
 
       {/* Ready to Elevate CTA */}
-      <section
-        className="relative py-36 px-6 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/philosophy-banner.jpg')",
-          backgroundColor: '#0a0a0a',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/65" />
+      <section className="relative py-40 px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/philosophy-banner.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-black/70" />
         <AnimatedSection>
           <div className="relative max-w-3xl mx-auto text-center text-white">
-            <h2 className="font-black text-3xl md:text-5xl tracking-[4px] mb-6">
+            <h2 className="font-display font-black text-3xl md:text-5xl tracking-widest mb-8">
               READY TO ELEVATE YOUR PERFORMANCE?
             </h2>
-            <p className="text-gray-300 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-white/60 text-base leading-relaxed mb-12 max-w-2xl mx-auto font-body">
               Whether you are preparing for competition, rebuilding after injury, or laying the foundation for long-term success — AMSC provides the structure, clarity, and support required to move forward with purpose.
             </p>
             <Link
               href="/apply"
-              className="inline-block bg-accent text-white px-10 py-4 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 tracking-wide"
+              className="inline-block bg-accent text-white px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30"
             >
               Apply to Train with AMSC
             </Link>

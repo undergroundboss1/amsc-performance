@@ -8,16 +8,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#fafafa",
-        surface: "#f5f5f8",
-        text: "#1a1a1a",
-        secondary: "#4A4A4A",
-        accent: "#a60008",
-        'accent-dark': "#820b0b",
+        background: "#0a0a0a",
+        surface: "#111111",
+        'surface-light': "#1a1a1a",
+        text: "#f5f5f5",
+        secondary: "#6B7280",
+        muted: "#9CA3AF",
+        accent: "#DC2626",
+        'accent-dark': "#B91C1C",
+        gold: "#CA8A04",
+        'gold-light': "#EAB308",
+        border: "rgba(255,255,255,0.08)",
       },
       fontFamily: {
-        heading: ["'Inter'", "-apple-system", "system-ui", "sans-serif"],
-        body: ["'Inter'", "-apple-system", "system-ui", "sans-serif"],
+        display: ["'Barlow Condensed'", "sans-serif"],
+        body: ["'Barlow'", "sans-serif"],
+      },
+      letterSpacing: {
+        'widest-xl': '0.25em',
       },
     },
   },

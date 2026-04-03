@@ -16,24 +16,24 @@ function ApplyContent() {
   const programName = program ? programNames[program] : null;
 
   return (
-    <section className="py-12 px-6 bg-white min-h-[80vh] pt-24">
+    <section className="py-12 px-6 bg-background min-h-[80vh] pt-24">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="font-black text-4xl md:text-5xl tracking-[4px] mb-4">
+          <h1 className="font-display font-black text-4xl md:text-5xl tracking-widest mb-4">
             APPLY TO TRAIN WITH AMSC
           </h1>
           {programName && (
-            <p className="text-accent font-semibold text-base tracking-wide">
+            <p className="text-accent font-display font-semibold text-base tracking-wider">
               Program: {programName}
             </p>
           )}
-          <p className="text-secondary mt-2 text-sm">
+          <p className="text-secondary mt-2 text-sm font-body">
             Complete the form below to begin your application process.
           </p>
         </div>
 
         {/* Tally.so Embed */}
-        <div className="bg-[#fafafa] border border-gray-200 p-2">
+        <div className="bg-surface border border-white/5 rounded-lg p-2">
           <iframe
             data-tally-src={`https://tally.so/embed/nPBdJk?alignLeft=1&hideTitle=1&transparentBackground=1${program ? `&program=${encodeURIComponent(programName || program)}` : ''}`}
             loading="lazy"
@@ -62,8 +62,8 @@ function ApplyContent() {
 export default function ApplyPage() {
   return (
     <Suspense fallback={
-      <section className="py-12 px-6 bg-white min-h-[80vh] flex items-center justify-center">
-        <p className="text-secondary">Loading application form...</p>
+      <section className="py-12 px-6 bg-background min-h-[80vh] flex items-center justify-center">
+        <p className="text-secondary font-body">Loading application form...</p>
       </section>
     }>
       <ApplyContent />

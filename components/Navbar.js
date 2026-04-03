@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -23,25 +24,23 @@ export default function Navbar() {
     { href: '/member-portal', label: 'Member Portal' },
   ];
 
-  const isHome = pathname === '/';
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-sm'
-          : isHome
-          ? 'bg-transparent'
-          : 'bg-white/95 backdrop-blur-xl border-b border-gray-100'
+          ? 'bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20'
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
-          <img
+          <Image
             src="/images/amsc-icon.png"
             alt="AMSC Performance"
-            className="h-9 w-auto transition-all duration-300"
+            width={40}
+            height={40}
+            className="h-10 w-auto transition-all duration-300"
           />
         </Link>
 
@@ -51,16 +50,18 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium relative group ${
+              className={`font-display text-sm font-semibold tracking-widest uppercase relative group transition-colors duration-200 ${
                 pathname === link.href
                   ? 'text-accent'
-                  : scrolled || !isHome
-                  ? 'text-text hover:text-accent'
-                  : 'text-white hover:text-white/80'
+                  : 'text-white/70 hover:text-white'
               }`}
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
+              <span
+                className={`absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 ${
+                  pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              />
             </Link>
           ))}
         </div>
@@ -69,7 +70,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <Link
             href="/apply"
-            className="bg-accent text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/20"
+            className="bg-accent text-white px-7 py-2.5 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30"
           >
             Apply
           </Link>
@@ -77,8 +78,9 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden ${scrolled || !isHome ? 'text-text' : 'text-white'}`}
+          className="md:hidden text-white/80 hover:text-white cursor-pointer"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {mobileOpen ? (
@@ -92,13 +94,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 shadow-lg">
+        <div className="md:hidden bg-[#0a0a0a]/98 backdrop-blur-xl border-t border-white/5 px-6 py-6 space-y-4">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`block text-sm font-medium ${
-                pathname === link.href ? 'text-accent' : 'text-text'
+              className={`block font-display text-sm font-semibold tracking-widest uppercase ${
+                pathname === link.href ? 'text-accent' : 'text-white/70'
               }`}
               onClick={() => setMobileOpen(false)}
             >
@@ -107,7 +109,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/apply"
-            className="block bg-accent text-white px-6 py-3 rounded-full text-sm font-semibold text-center"
+            className="block bg-accent text-white px-6 py-3 rounded-full font-display text-sm font-bold tracking-wider uppercase text-center mt-4"
             onClick={() => setMobileOpen(false)}
           >
             Apply
