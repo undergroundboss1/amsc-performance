@@ -1,6 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 
 const programNames = {
   'one-on-one': 'One-on-One Coaching',
@@ -14,6 +14,30 @@ function ApplyContent() {
   const searchParams = useSearchParams();
   const program = searchParams.get('program');
   const programName = program ? programNames[program] : null;
+
+  useEffect(() => {
+    const loadTally = () => {
+      if (typeof window.Tally !== 'undefined') {
+        window.Tally.loadEmbeds();
+      } else {
+        const existingScript = document.querySelector('script[src="https://tally.so/widgets/embed.js"]');
+        if (!existingScript) {
+          const script = document.createElement('script');
+          script.src = 'https://tally.so/widgets/embed.js';
+          script.onload = () => {
+            if (typeof window.Tally !== 'undefined') {
+              window.Tally.loadEmbeds();
+            }
+          };
+          document.body.appendChild(script);
+        }
+      }
+    };
+
+    loadTally();
+  }, []);
+
+  const tallySrc = `https://tally.so/embed/nPBdJk?alignLeft=1&hideTitle=1&transparentBackground=1${program ? `&program=${encodeURIComponent(programName || program)}` : ''}`;
 
   return (
     <section className="py-12 px-6 bg-background min-h-[80vh] pt-24">
@@ -35,7 +59,7 @@ function ApplyContent() {
         {/* Tally.so Embed */}
         <div className="bg-surface border border-white/5 rounded-lg p-2">
           <iframe
-            data-tally-src={`https://tally.so/embed/nPBdJk?alignLeft=1&hideTitle=1&transparentBackground=1${program ? `&program=${encodeURIComponent(programName || program)}` : ''}`}
+            data-tally-src={tallySrc}
             loading="lazy"
             width="100%"
             height="800"
@@ -45,15 +69,6 @@ function ApplyContent() {
             title="AMSC Application Form"
           />
         </div>
-
-        {/* Tally Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}
-            `,
-          }}
-        />
       </div>
     </section>
   );
