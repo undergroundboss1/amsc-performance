@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import CookieConsent from "../components/CookieConsent";
 
 export const metadata = {
   metadataBase: new URL('https://amsc-performance.vercel.app'),
@@ -104,6 +105,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

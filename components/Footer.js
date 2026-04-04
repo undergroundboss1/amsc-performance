@@ -30,6 +30,8 @@ export default function Footer() {
               <Link href="/philosophy" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Philosophy</Link>
               <Link href="/member-portal" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Member Portal</Link>
               <Link href="/apply" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Apply</Link>
+              <Link href="/privacy" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Privacy Policy</Link>
+              <Link href="/terms" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Terms of Use</Link>
             </div>
           </div>
 
