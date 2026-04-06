@@ -3,19 +3,13 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useRef } from 'react';
 import Script from 'next/script';
 
-const programNames = {
-  'one-on-one': 'One-on-One Coaching',
-  'group': 'Performance Group Training',
-  'online': 'Online Performance Training',
-  'youth': 'Youth Athletic Development',
-  'consulting': 'Team & School Consulting',
-};
+import { programsData } from '../../lib/programs';
 
 function ApplyContent() {
   const searchParams = useSearchParams();
   const iframeRef = useRef(null);
   const program = searchParams.get('program');
-  const programName = program ? programNames[program] : null;
+  const programName = program && programsData[program] ? programsData[program].name : null;
 
   const tallySrc = `https://tally.so/embed/Pd1g9V?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1${program ? `&program=${encodeURIComponent(programName || program)}` : ''}`;
 

@@ -17,8 +17,14 @@ export default function MemberPortalPage() {
           </h1>
           <p className="text-secondary font-display text-lg mb-2 tracking-wider">Coming Soon</p>
           <p className="text-secondary text-sm leading-relaxed mb-8 font-body">
-            The AMSC Member Portal is currently under development. Soon you&apos;ll be able to access your training programs, track performance metrics, and communicate with your coaching team.
+            The AMSC Member Portal is currently under development. Here&apos;s what&apos;s coming:
           </p>
+          <ul className="text-left text-secondary text-sm space-y-3 mb-10 font-body max-w-sm mx-auto">
+            <li className="flex items-start gap-3"><span className="text-accent font-bold mt-0.5">&mdash;</span> Access your personalised training programs</li>
+            <li className="flex items-start gap-3"><span className="text-accent font-bold mt-0.5">&mdash;</span> Track performance metrics and progress</li>
+            <li className="flex items-start gap-3"><span className="text-accent font-bold mt-0.5">&mdash;</span> Communicate with your coaching team</li>
+            <li className="flex items-start gap-3"><span className="text-accent font-bold mt-0.5">&mdash;</span> View assessment results and benchmarks</li>
+          </ul>
           <Link
             href="/"
             className="inline-block bg-accent text-white px-8 py-3 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"

@@ -37,7 +37,7 @@ export default function PhilosophyPage() {
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center bg-background text-white px-6 text-center">
         <AnimatedSection>
           <h1 className="font-display font-black text-4xl md:text-6xl leading-tight mb-6 tracking-widest">
-            TRAINING IS NOT RANDOM.<br />IT&apos;S ENGINEERED.
+            TRAINING IS NOT RANDOM.{' '}<span className="block md:inline">IT&apos;S ENGINEERED.</span>
           </h1>
           <p className="text-secondary text-base max-w-2xl mx-auto leading-relaxed font-body">
             At AMSC PERFORMANCE, every athlete follows a structured system designed to develop strength, improve movement, and transfer performance to sport.
