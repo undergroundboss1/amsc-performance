@@ -16,15 +16,18 @@ export default function CountUp({ end, duration = 2, suffix = '', prefix = '' })
       return;
     }
 
+    let frameId;
     const startTime = performance.now();
     const step = (now) => {
       const elapsed = (now - startTime) / 1000;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * end));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) frameId = requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
+    frameId = requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(frameId);
   }, [inView, end, duration, shouldReduceMotion]);
 
   return (
