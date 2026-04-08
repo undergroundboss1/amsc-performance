@@ -62,7 +62,7 @@ export async function POST(request) {
     if (error) {
       console.error('Supabase insert error:', JSON.stringify(error, null, 2));
       return NextResponse.json(
-        { error: 'Failed to submit your application. Please try again.', debug: error.message },
+        { error: 'Failed to submit your application. Please try again.' },
         { status: 500 }
       );
     }
