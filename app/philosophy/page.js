@@ -168,10 +168,10 @@ export default function PhilosophyPage() {
               Join athletes who train with purpose, progress with intention, and perform with confidence.
             </p>
             <Link
-              href="/apply"
+              href="/join"
               className="inline-block bg-accent text-white px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30"
             >
-              Apply to Train with AMSC
+              Join AMSC
             </Link>
           </div>
         </AnimatedSection>

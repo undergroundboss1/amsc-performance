@@ -74,10 +74,10 @@ export default function Navbar() {
         {/* Apply Button */}
         <div className="hidden md:block">
           <Link
-            href="/apply"
+            href="/join"
             className="bg-accent text-white px-7 py-2.5 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30"
           >
-            Apply
+            Join
           </Link>
         </div>
 
@@ -114,11 +114,11 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/apply"
+            href="/join"
             className="block bg-accent text-white px-6 py-3 rounded-full font-display text-sm font-bold tracking-wider uppercase text-center mt-4"
             onClick={() => setMobileOpen(false)}
           >
-            Apply
+            Join
           </Link>
         </div>
       )}

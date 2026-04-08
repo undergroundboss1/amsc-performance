@@ -154,10 +154,10 @@ export default function Home() {
             variants={heroChild}
           >
             <Link
-              href="/apply"
+              href="/join"
               className="bg-accent text-white px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30 text-center"
             >
-              Apply to Train with AMSC
+              Join AMSC
             </Link>
             <Link
               href="/programs"
@@ -342,10 +342,10 @@ export default function Home() {
                   {programs[0].price}<span className="text-sm font-normal text-secondary"> / month</span>
                 </p>
                 <Link
-                  href={`/apply?program=${programs[0].slug}`}
+                  href={`/join?plan=${programs[0].slug}`}
                   className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
                 >
-                  Start Your Application
+                  Join Now
                 </Link>
               </div>
             </div>
@@ -373,10 +373,10 @@ export default function Home() {
                       {program.price}<span className="text-sm font-normal text-secondary"> / month</span>
                     </p>
                     <Link
-                      href={`/apply?program=${program.slug}`}
+                      href={`/join?plan=${program.slug}`}
                       className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
                     >
-                      Start Your Application
+                      Join Now
                     </Link>
                   </div>
                 </div>
@@ -404,10 +404,10 @@ export default function Home() {
                   {programs[3].price}<span className="text-sm font-normal text-secondary"> / month</span>
                 </p>
                 <Link
-                  href={`/apply?program=${programs[3].slug}`}
+                  href={`/join?plan=${programs[3].slug}`}
                   className="mt-4 block bg-accent text-white text-center py-4 rounded-full font-display font-bold text-sm tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
                 >
-                  Start Your Application
+                  Join Now
                 </Link>
               </div>
             </div>
@@ -447,10 +447,10 @@ export default function Home() {
               Whether you are preparing for competition, rebuilding after injury, or laying the foundation for long-term success — AMSC provides the structure, clarity, and support required to move forward with purpose.
             </p>
             <Link
-              href="/apply"
+              href="/join"
               className="inline-block bg-accent text-white px-10 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/30"
             >
-              Apply to Train with AMSC
+              Join AMSC
             </Link>
           </div>
         </AnimatedSection>

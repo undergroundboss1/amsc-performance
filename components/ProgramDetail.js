@@ -84,10 +84,10 @@ export default function ProgramDetail({ program }) {
               )}
             </p>
             <Link
-              href={`/apply?program=${program.slug || ''}`}
+              href={program.price === 'Contact' ? '/apply?program=consulting' : `/join?plan=${program.slug || ''}`}
               className="mt-8 inline-block bg-accent text-white px-12 py-4 rounded-full font-display text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-all duration-200"
             >
-              {program.price === 'Contact' ? 'Contact Us' : 'Start Your Application'}
+              {program.price === 'Contact' ? 'Contact Us' : 'Join Now'}
             </Link>
             <p className="text-secondary text-sm mt-6 font-body">
               All programs begin with an initial assessment and consultation.

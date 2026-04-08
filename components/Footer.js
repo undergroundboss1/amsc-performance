@@ -29,7 +29,7 @@ export default function Footer() {
               <Link href="/programs" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Programs</Link>
               <Link href="/philosophy" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Philosophy</Link>
               <Link href="/member-portal" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Member Portal</Link>
-              <Link href="/apply" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Apply</Link>
+              <Link href="/join" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Join</Link>
               <Link href="/privacy" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Privacy Policy</Link>
               <Link href="/terms" className="block text-secondary text-sm hover:text-accent transition-colors font-body">Terms of Use</Link>
             </div>
@@ -66,10 +66,13 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-white/5 py-6 text-center">
+      <div className="border-t border-white/5 py-6 flex items-center justify-center gap-4">
         <p className="text-white/20 text-xs font-body">
           &copy; 2026 AMSC Performance. All rights reserved.
         </p>
+        <Link href="/admin" className="text-white/10 text-xs font-body hover:text-white/30 transition-colors">
+          Admin
+        </Link>
       </div>
     </footer>
   );
